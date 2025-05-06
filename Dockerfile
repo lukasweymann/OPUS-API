@@ -16,6 +16,8 @@ RUN mkdir -p /var/www
 RUN mkdir -p /var/run/apache2
 RUN mkdir -p /var/lock/apache2
 
+COPY ../apache2.conf /etc/apache2/apache2.conf
+
 # Set up virtual environment
 COPY requirements.txt /home/cloud-user/OPUS-API/requirements.txt
 RUN python3.10 -m venv /home/cloud-user/OPUS-API/opusapienv

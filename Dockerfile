@@ -21,6 +21,10 @@ RUN /usr/bin/bash -c "source /home/cloud-user/OPUS-API/opusapienv/bin/activate &
 pip install --no-cache-dir --upgrade pip && \
 pip install --no-cache-dir flask==2.3.2 werkzeug==2.3.3 gunicorn==20.1.0 && \
 pip install --no-cache-dir -r /home/cloud-user/OPUS-API/requirements.txt && \
+pip install opustools==1.8.0 && \
+opus_get -l -d RF -s en -t sv --local_db && \
+opus_get -u -db ~/.OpusTools/opusdata.db --suppress_prompts && \
+cp ~/.OpusTools/opusdata.db /home/cloud-user/OPUS-API/ && \
 deactivate"
 
 COPY . /home/cloud-user/OPUS-API
